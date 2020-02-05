@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 const todos = getTodosFromLocalStorage();
 
@@ -21,7 +21,7 @@ document.querySelector('#completed-check').addEventListener('change', e => {
 
 document.querySelector('#add-todo-form').addEventListener('submit', e => {
   e.preventDefault();
-  const newTodo = e.target.elements['add-todo-input'].value;
+  const newTodo = e.target.elements['add-todo-input'].value.trim();
   if (newTodo) {
     todos.push({
       id: uuidv4(),
