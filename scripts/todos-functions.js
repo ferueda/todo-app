@@ -76,11 +76,20 @@ const displayTodos = function(todos, filter) {
     return matchText && matchHidden;
   });
 
-  document.querySelector('#todos-container').innerHTML = '';
+  const todosContainer = document.querySelector('#todos-container');
+
+  todosContainer.innerHTML = '';
 
   generateSummaryDOM(filteredTodos);
 
-  filteredTodos.forEach(todo => document.querySelector('#todos-container').appendChild(createTodoDomElement(todo)));
+  if (filteredTodos.length > 0) {
+    filteredTodos.forEach(todo => todosContainer.appendChild(createTodoDomElement(todo)));
+  } else {
+    const noEl = document.createElement('p');
+    noEl.classList.add('empty-message');
+    noEl.textContent = 'No todos to show';
+    todosContainer.appendChild(noEl);
+  }
 };
 
 // get DOM elements for summary list
